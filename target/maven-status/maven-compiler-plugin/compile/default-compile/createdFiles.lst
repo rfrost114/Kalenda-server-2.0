@@ -1,0 +1,7 @@
+com\mycompany\kalenda\server\two\DayNames.class
+com\mycompany\kalenda\server\two\User.class
+com\mycompany\kalenda\server\two\Day.class
+com\mycompany\kalenda\server\two\Group.class
+com\mycompany\kalenda\server\two\KalendaServerTwo.class
+com\mycompany\kalenda\server\two\WeekAvail.class
+com\mycompany\kalenda\server\two\ServerController.class
