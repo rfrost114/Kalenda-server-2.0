@@ -12,7 +12,6 @@ package com.mycompany.kalenda.server.two;
 import packages.User;
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
 
 public class Handler extends Thread {
     

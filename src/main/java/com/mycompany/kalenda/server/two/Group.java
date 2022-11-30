@@ -5,9 +5,7 @@
 package com.mycompany.kalenda.server.two;
 
 import java.util.Properties;
-import javax.mail.internet.*;
 import javax.mail.*;
-import javax.activation.*;
 import packages.DayNames;
 import packages.User;
 
