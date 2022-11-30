@@ -13,10 +13,12 @@ import packages.User;
 import java.io.*;
 import java.net.*;
 
+// craeted to handle a single client connection
 public class Handler extends Thread {
     
     private final Socket socket;
     private final ObjectInputStream in;
+    //output steam is never used but must exist
     private final ObjectOutputStream out;
 
     
@@ -34,6 +36,7 @@ public class Handler extends Thread {
         while (true) {
             try {
                 
+                // get the user from the client
                 User user = (User) in.readObject();
                 
 
@@ -41,6 +44,10 @@ public class Handler extends Thread {
                 Boolean isGroup = false;
                 Group currentGroup = null;
                 
+                // check if the user needs to join or create a group
+                // assumption is that if the group already exists then the user wants to join it
+                // and if the group doesn't exist then they want to create it
+                // is this a bad assumption ... possibly
                 for (Group g : ServerController.groupList) {
                     if (groupID == g.getID()) {
                         isGroup = true;
@@ -50,10 +57,12 @@ public class Handler extends Thread {
 
                 
                 if (isGroup) {
+                    //add user to group
                     System.out.println("Adding user to group " + groupID);
                     currentGroup.addMember(user);
                 }
                 else {
+                    //create new group and add user to it
                     System.out.println("Creating Group: " + groupID);
                     System.out.println("Adding user: " + user.getName() + " to group");
                     currentGroup = new Group(groupID , user.getGroupSize());

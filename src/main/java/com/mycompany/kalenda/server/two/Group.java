@@ -19,6 +19,7 @@ public class Group {
     private int currentMembers;
     private long groupID;
     
+    // Constructor
     public Group(long groupID, int groupSize) {
         
         users = new User[groupSize];
@@ -26,6 +27,7 @@ public class Group {
         currentMembers = 0;
     }
     
+    //add member to group
     public void addMember(User newUser) {
         
         users[currentMembers] = newUser;
@@ -37,6 +39,7 @@ public class Group {
         }
     }
     
+    //merge algorithm
     private void merge() {
         
         Boolean[][] mergedWeekAvail = new Boolean[7][24];
@@ -44,7 +47,7 @@ public class Group {
         
         for (DayNames dayName : DayNames.values()) {
             
-            
+            //create array of all trues (base state)
             Boolean[] mergedDay = new Boolean[24];
             for (int i = 0; i < 24; i++) {
                 mergedDay[i] = true;
@@ -54,6 +57,7 @@ public class Group {
 
                 Boolean[] x = u.getAvail().getDay(dayName).getTimes();
                 
+                // AND together all users in group
                 for (int i = 0; i < 24; i++) {
                     mergedDay[i] = mergedDay[i] && x[i];
                 }
@@ -74,8 +78,12 @@ public class Group {
         return groupID;
     }
     
+    //starts to send emails
     public void sendEmails (String mergedWeek) {
+        // largely stock code
         String from = "kalenda.merger@gmail.com";
+        //wont work for you b/c of secuirty settings :) either contact me or make your own account
+        //
         String pswd = "hvzcypbcrvboebbj";
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -91,6 +99,7 @@ public class Group {
         };
         Session session = Session.getDefaultInstance(properties, authenticator);
         
+        //send emails to all users
         for (User u : this.users) {
             String email = u.getName();
             EmailBuilder.sendEmail(session, email, "Your Merged Schedule", mergedWeek);
@@ -98,7 +107,7 @@ public class Group {
         
     }
     
-    
+    // a complicated method to turn the boolean[][] from merge into something readable
     public String generateOutputString (Boolean[][] mergedWeek) {
         String outputString = "Here are all of the times your group is available this week\n";
         String spacer = "==========\n";

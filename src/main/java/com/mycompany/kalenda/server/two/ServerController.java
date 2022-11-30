@@ -18,7 +18,8 @@ public class ServerController {
     
     private Socket socket;
     private ServerSocket server = null;
-
+    
+    // needs to be accessed by other classes and passing does not make sense
     protected static ArrayList<Group> groupList;
     
     public ServerController(int port) throws IOException {
@@ -31,6 +32,7 @@ public class ServerController {
             socket = null;
             
             try {
+                // creates a new handler object whenever there is a connection from the client
                 socket = server.accept();
                 System.out.println("Connection Established on " + socket);
                 
@@ -43,6 +45,7 @@ public class ServerController {
             }
             catch (Exception ioe) {
                socket.close();
+               // aaaaa is what you will say if this code ever executes
                System.out.println("aaaaaa");
                ioe.printStackTrace();
             }
