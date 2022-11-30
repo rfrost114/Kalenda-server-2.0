@@ -84,7 +84,7 @@ public class Group {
         String from = "kalenda.merger@gmail.com";
         //wont work for you b/c of secuirty settings :) either contact me or make your own account
         //
-        String pswd = "hvzcypbcrvboebbj";
+        String pswd = "********";
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.socketFactory.port", "465");
