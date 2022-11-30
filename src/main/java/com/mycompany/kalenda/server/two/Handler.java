@@ -19,7 +19,7 @@ public class Handler extends Thread {
     private final Socket socket;
     private final ObjectInputStream in;
     private final ObjectOutputStream out;
-//    private ArrayList<Group> groupList;
+
     
     public Handler(Socket socket, ObjectInputStream in, ObjectOutputStream out) {
         
@@ -37,7 +37,7 @@ public class Handler extends Thread {
                 
                 User user = (User) in.readObject();
                 
-//                user.getAvail().report();
+
                 long groupID = user.getGroupNumber();
                 Boolean isGroup = false;
                 Group currentGroup = null;
@@ -93,64 +93,4 @@ public class Handler extends Thread {
 }
 
 
-//                int actionNumber = in.readInt();
-//                in.skip(in.available());
-//                out.writeBoolean(false);
-//
-//                
-//                
-//                if (actionNumber == 1) {
-//                    //create group
-//                    System.out.println("Ready to create group");
-//                    long groupNumber = 0;
-//                    int groupSize = 0;
-//                    
-//                    try {
-//                        groupNumber = in.readLong();
-//                        System.out.println("got groupID: " + groupNumber);
-//                    }
-//                    catch (IOException ioe) {
-//                        System.out.println("Trouble reading groupNumber");
-//                        ioe.printStackTrace();
-//                    }
-//                    
-//                    try {
-//                        groupSize = in.readInt();
-//                        
-//                    }
-//                    catch (IOException ioe) {
-//                        System.out.println("Trouble reading groupSize");
-//                        ioe.printStackTrace();
-//                    }
-//                    
-//                    if (groupNumber != 0 && groupSize != 0) {
-//                        System.out.println("Creating New Group " + groupNumber + " Size: " + groupSize);
-//                        Group g = new Group(groupNumber, groupSize);
-//                        ServerController.groupList.add(g);
-//                    }
-//                }
-//                else if (actionNumber == 2) {
-//                    System.out.println("Ready to add user to group");
-//                    try {
-//                        User user = (User) in.readObject();
-//                        System.out.println("Adding user to a group");
-//                        System.out.println(user.getName());
-//                        long id = user.getGroupNumber();
-//                        
-//                        for (Group g : ServerController.groupList) {
-//                            if (g.getID() == id) {
-//                                g.addMember(user);
-//                            }
-//                        }
-//                    }
-//                    catch (IOException ioe) {
-//                        ioe.printStackTrace();
-//                    }
-//                    catch (ClassNotFoundException cnf) {
-//                        cnf.printStackTrace();
-//                    }
-//                    
-//                }
-//                else {
-//                    System.out.println("Unkown Action Number Recieved: " + actionNumber);
-//                }
+

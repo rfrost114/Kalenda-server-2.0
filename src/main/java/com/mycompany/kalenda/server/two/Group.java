@@ -66,13 +66,7 @@ public class Group {
             
         }
         System.out.println(mergedWeekAvail);
-//        for (int i = 0; i < 7; i++) {
-//            System.out.print("[");
-//            for (int j = 0; j <24; j++ ) {
-//                System.out.print(" " + mergedWeekAvail[i][j] + " ");
-//            }
-//            System.out.println("]");
-//        }
+
         String output = generateOutputString(mergedWeekAvail);
         System.out.println(output);
         sendEmails(output);
